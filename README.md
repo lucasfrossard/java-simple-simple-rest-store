@@ -103,7 +103,7 @@ You will need to create an appropriate relational schema to persist your entitie
     * How to compile and run the application.
     * How to run the suite of automated tests.
     * Mention anything that was asked but not delivered and why, and any additional comments.
-* Any questions, please send an email to **ac.brazil.recruitment@avenuecode.com**
+* Any questions, please send an email to **recruitment.engineering@avenuecode.com**
 
 Thank you,
 The AvenueCode Recruiting Team
