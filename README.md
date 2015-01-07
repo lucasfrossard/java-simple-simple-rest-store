@@ -1,4 +1,4 @@
-# Java WebApp Coding Test Instructions
+# Avenue Code Java Challenge
 
 Your task is to develop a simple RESTful webservice that implements a common e-commerce scenario, placing and modifying orders. We have provided you with an mavenized starter template that provides you with the necessary dependencies to build, test and run a webservice using the following:
 
