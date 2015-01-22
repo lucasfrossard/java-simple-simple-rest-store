@@ -43,48 +43,6 @@ which should implement four methods:
 - read an existing order by its id
 			
 Your service should use JSON as its representation format for objects
-
-# Domain Model			
-			
-Your application should consist of the following entities with the following properties and methods:
-
-## Product
-	
-### properties:
-name       |    description
-:----------|:-----------------------------------------------------
-id         | a numeric identifier which is unique for each product
-name       | text description of the product
-unit price | the price of a single unit of this product
-		
-## Order
-	
-### properties:
-
-name  |    description
-:-----|:-----------------------------------------------------
-id    | a numeric identifier which is unique for each product
-items | a list of items that comprise the order
-			
-### methods:
-name            |    description
-:---------------|:---------------------------------------------------------------
-number of items | returns the number of items in the order
-total price     | returns the sum of the extended price of all items in the order
-			
-## OrderItem
-	
-### properties:
-name     |    description
-:--------|:----------------------------------------------------------
-id       | a numeric identifier which is unique for each item
-product  | the product which is being ordered by this item
-quantity | an integer quantity of products being ordered by this item
-			
-### methods:
-name           |    description
-:--------------|:-------------------------------------------------------
-extended price | the price for the item's product at the item's quantity
 			
 You will need to create an appropriate relational schema to persist your entities, along with any required mappings.
 
