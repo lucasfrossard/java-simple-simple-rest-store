@@ -38,7 +38,7 @@ which should implement two methods:
 which should implement four methods:
 		
 - place an order
-- modify and existing order
+- modify an existing order
 - list placed orders
 - read an existing order by its id
 			
