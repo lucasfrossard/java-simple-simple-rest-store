@@ -1,15 +1,20 @@
 package com.avenuecode.app.rws;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.stereotype.Controller;
+
 import com.avenuecode.app.entities.Product;
+import com.avenuecode.app.service.ProductService;
+import com.avenuecode.persistence.ProductDAO;
 import com.google.gson.Gson;
 
 /**
@@ -19,7 +24,12 @@ import com.google.gson.Gson;
  *
  */
 @Path("product")
-public class ProductService {
+@Transactional
+@Controller
+public class ProductWS {
+
+	@Inject
+	private ProductService productService;
 
 	@GET
 	@Path("/{id}")
@@ -35,12 +45,18 @@ public class ProductService {
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String list() {
-		Collection<Product> products = new ArrayList<Product>();
-		products.add(new Product(1, "Botas"));
-		products.add(new Product(1, "Cadarço"));
+
+		Collection<Product> list = this.productService.list();
 		Gson gson = new Gson();
-		String json = gson.toJson(products);
+		String json = gson.toJson(list);
 		return json;
+	}
+
+	@GET
+	@Path("/populate/{name}")
+	public String populate(@PathParam("name") String name) {
+		this.productService.create(name);
+		return this.list();
 	}
 
 }

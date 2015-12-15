@@ -2,6 +2,8 @@ package com.avenuecode.app.rws;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,7 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.avenuecode.app.entities.Order;
+import com.avenuecode.app.entities.ShoppingList;
 import com.avenuecode.app.entities.Product;
 import com.google.gson.Gson;
 
@@ -21,7 +23,7 @@ import com.google.gson.Gson;
  *
  */
 @Path("order")
-public class OrderService {
+public class ShoppingListWS {
 
 	/**
 	 * Place an order
@@ -62,11 +64,11 @@ public class OrderService {
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String list() {
-		Collection<Product> products = new ArrayList<Product>();
+		Set<Product> products = new HashSet<>();
 		products.add(new Product(1, "Botas"));
 		products.add(new Product(1, "Cadarço"));
-		Order anOrder = new Order(1, products);
-		Collection<Order> orders = new ArrayList<Order>();
+		ShoppingList anOrder = new ShoppingList(1, products);
+		Collection<ShoppingList> orders = new ArrayList<ShoppingList>();
 		orders.add(anOrder);
 		Gson gson = new Gson();
 		String json = gson.toJson(orders);
