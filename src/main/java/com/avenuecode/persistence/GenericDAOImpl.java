@@ -14,6 +14,7 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	
 	@Override
 	public long insertOrUpdate(T entity) {
+		this.sessionFactory.getCurrentSession().flush();
 		return (long) this.sessionFactory.getCurrentSession().save(entity);
 	}
 

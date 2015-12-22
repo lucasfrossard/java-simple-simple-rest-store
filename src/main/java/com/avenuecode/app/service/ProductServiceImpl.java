@@ -22,8 +22,15 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void create(String name) {
+	public long create(String name) {
 		Product product = new Product(0, name);
-		this.productDAO.insertOrUpdate(product);
+		long id = this.productDAO.insertOrUpdate(product);
+		product.setId(id);
+		return id;
+	}
+
+	@Override
+	public Product retrieve(long id) {
+		return this.productDAO.findByID(id, Product.class);
 	}
 }

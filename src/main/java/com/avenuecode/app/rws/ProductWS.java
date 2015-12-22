@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.avenuecode.app.entities.Product;
 import com.avenuecode.app.service.ProductService;
 import com.avenuecode.persistence.ProductDAO;
+import com.avenuecode.util.GsonUtils;
 import com.google.gson.Gson;
 
 /**
@@ -35,10 +36,8 @@ public class ProductWS {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getProduct(@PathParam("id") int id) {
-		Product product = new Product(1, "Botas");
-		Gson gson = new Gson();
-		String json = gson.toJson(product);
-		return json;
+		Product product = this.productService.retrieve(id);
+		return GsonUtils.convertToJson(product);
 	}
 
 	@GET
@@ -47,9 +46,7 @@ public class ProductWS {
 	public String list() {
 
 		Collection<Product> list = this.productService.list();
-		Gson gson = new Gson();
-		String json = gson.toJson(list);
-		return json;
+		return GsonUtils.convertToJson(list);
 	}
 
 	@GET

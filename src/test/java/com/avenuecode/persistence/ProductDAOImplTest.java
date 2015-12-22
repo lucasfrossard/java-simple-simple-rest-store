@@ -27,25 +27,25 @@ public class ProductDAOImplTest {
 	@Autowired
 	private ProductDAO productDAO;
 
-	private long idBota, idBolsa;
+	private Product bota, bolsa;
 	
 	@Before
 	public void setup() {
 		ProductTestUtil ptu = new ProductTestUtil(this.productDAO) ;
-		this.idBolsa = ptu.persistProduct(BOLSA);
-		this.idBota = ptu.persistProduct(BOTA);
+		this.bolsa = ptu.persistProduct(BOLSA);
+		this.bota = ptu.persistProduct(BOTA);
 	}
 
 	@Test
 	public void testFindBolsa() {
-		Product found = productDAO.findByID(this.idBolsa, Product.class);
+		Product found = productDAO.findByID(this.bolsa.getId(), Product.class);
 		Assertions.assertThat(found).isNotNull();
 		Assertions.assertThat(found.getName()).isEqualTo(BOLSA);
 	}
 	
 	@Test
 	public void testFindBota() {
-		Product found = productDAO.findByID(this.idBota, Product.class);
+		Product found = productDAO.findByID(this.bota.getId(), Product.class);
 		Assertions.assertThat(found).isNotNull();
 		Assertions.assertThat(found.getName()).isEqualTo(BOTA);
 	}

@@ -9,8 +9,9 @@ public class ProductTestUtil {
 	
 	private ProductDAO productDAO;
 
-	public long persistProduct(String name) {
+	public Product persistProduct(String name) {
 		Product product = Product.builder().name(name).build();
-		return this.productDAO.insertOrUpdate(product);
+		product.setId(this.productDAO.insertOrUpdate(product));
+		return product;
 	}
 }
