@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import com.avenuecode.app.entities.Product;
 import com.avenuecode.app.service.ProductService;
-import com.avenuecode.persistence.ProductDAO;
 import com.avenuecode.util.GsonUtils;
-import com.google.gson.Gson;
 
 /**
  * Class responsible for handling products
@@ -27,7 +25,7 @@ import com.google.gson.Gson;
 @Path("product")
 @Transactional
 @Controller
-public class ProductWS {
+public class ProductWS{
 
 	@Inject
 	private ProductService productService;

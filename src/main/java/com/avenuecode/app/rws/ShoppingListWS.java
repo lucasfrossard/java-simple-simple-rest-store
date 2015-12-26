@@ -16,7 +16,6 @@ import com.avenuecode.app.entities.ShoppingList;
 import com.avenuecode.app.pojo.ShoppingListDetail;
 import com.avenuecode.app.service.ShoppingListService;
 import com.avenuecode.util.GsonUtils;
-import com.google.gson.Gson;
 
 /**
  * Class responsible for handling orders.
@@ -54,6 +53,7 @@ public class ShoppingListWS {
 	@Path("/change/{orderId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String change(Collection<Product> products, @PathParam("orderId") long orderId) {
+		this.shoppingListService.modify(orderId, products);
 		return GsonUtils.convertToJson(Boolean.TRUE);
 	}
 

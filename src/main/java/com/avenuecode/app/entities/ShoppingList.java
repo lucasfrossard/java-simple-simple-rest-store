@@ -4,13 +4,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,8 +41,9 @@ public class ShoppingList {
 	/**
 	 * Product within this order
 	 */
-	@OneToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "ShopProducts", joinColumns = @JoinColumn(name = "shop_id", foreignKey = @ForeignKey(name = "fk_shp_prd_order_id") ) , inverseJoinColumns = @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_ord_prd_product_id") ) )
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER )
+	@JoinTable(name = "ShopProducts", joinColumns = @JoinColumn(name = "shop_id", foreignKey = @ForeignKey(name = "fk_shp_prd_order_id") ) , 
+	                                  inverseJoinColumns = @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_ord_prd_product_id") ) )
 	private Set<Product> products;
 
 }

@@ -62,7 +62,6 @@ public class ShoppingListServiceImpl implements ShoppingListService {
 		this.shopDAO.insertOrUpdate(shop);
 	}
 
-	@Override
 	public Collection<ShoppingList> list() {
 		Collection<ShoppingList> shoppingLists = this.shopDAO.retrieveAll(ShoppingList.class);
 		return shoppingLists;
